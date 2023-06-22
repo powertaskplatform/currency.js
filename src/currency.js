@@ -72,6 +72,11 @@ function parse(value, opts, useRounding = true) {
           .replace(/\((.*)\)/, '-$1')    // allow negative e.g. (1.99)
           .replace(regex, '')            // replace any non numeric values
           .replace(decimalString, '.');  // convert any decimal values
+
+    if (!v && v !== 0) {
+      return Number.NaN;
+    }
+
     v = v || 0;
   } else {
     if(errorOnInvalid) {
